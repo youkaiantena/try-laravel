@@ -1,25 +1,11 @@
 version: '3'
 
 services:
-  web:
-    build: .
+  php:
+    build: ./infra/php
     ports:
       - '8000:8000'
     volumes:
-      - ./src:/var/www/html
-  postgres:
-    image: postgres:14.2-alpine3.15
-    restart: always
-    environment:
-      POSTGRES_USER: laravel
-      POSTGRES_PASSWORD: laravel
-      PGPASSWORD: pglaravel
-      POSTGRES_DB: tryme
-      TZ: "Asia/Tokyo"
-    ports:
-      - '5432:5432'
-    volumes:
-      - postgres:/var/lib/postgresql/data
+      - ./:/var/www/html
 volumes:
-  web:
-  postgres:
+  php:
